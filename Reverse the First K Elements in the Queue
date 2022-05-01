@@ -1,0 +1,42 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+public class Solution {
+
+	public static Queue<Integer> reverseKElements(Queue<Integer> input, int k) {
+		//Your code goes here
+        Stack<Integer> s=new Stack<>();
+        int count=0;
+        // while(!input.isEmpty()){
+        //     s.push(input.peek());
+        //     input.pop();
+        //    // count++;
+        // }
+        // while(!s.isEmpty()){
+        //     input.add(s.peek());
+        //     s.pop();
+        // }
+        // while(count<input.size()-k){
+        //     int temp=input.peek();
+        //     input.pop();
+        //     input.push(temp);
+        //     count++;
+        // }
+        Queue<Integer> q =new LinkedList<>();
+        while(count<k){
+            s.push(input.peek());
+             input.remove();
+            count++;
+        }
+        while(!s.isEmpty()){
+            q.add(s.pop());
+        }
+        while(!input.isEmpty()){
+            q.add(input.peek());
+            input.remove();
+        }
+        return q; 
+	}
+
+}
